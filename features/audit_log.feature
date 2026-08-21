@@ -1,15 +1,15 @@
 Feature: Delivery audit log
   As an application manager
   I want to inspect a log of notification delivery attempts
-  So that I can verify subscribers were reached and investigate problems
+  So that I can verify recipients were reached and investigate problems
 
   Scenario: Successful delivery is logged
-    Given a vulnerability notification has been sent to a subscriber
+    Given a vulnerability notification has been sent to a recipient
     When the notification is delivered successfully
     Then an audit log entry is created showing a successful delivery
 
   Scenario: Failed delivery is logged
-    Given a vulnerability notification has been sent to a subscriber
+    Given a vulnerability notification has been sent to a recipient
     When the notification fails to deliver
     Then an audit log entry is created showing a failed delivery
 

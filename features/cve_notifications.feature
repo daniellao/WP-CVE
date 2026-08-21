@@ -8,18 +8,18 @@ Feature: CVE vulnerability notifications
 
   Scenario: A new publicly disclosed vulnerability triggers a notification
     Given a new CVE affecting WordPress has been publicly disclosed
-    And there are subscribers relevant to that vulnerability
+    And there are recipients relevant to that vulnerability
     When WP CVE detects the disclosed vulnerability
-    Then a notification is sent to the relevant subscribers
+    Then a notification is sent to the relevant recipients
     And the notification is recorded in the audit log
 
-  Scenario: A disclosed vulnerability with no relevant subscribers does not send notifications
+  Scenario: A disclosed vulnerability with no relevant recipients does not send notifications
     Given a new CVE affecting WordPress has been publicly disclosed
-    And there are no subscribers relevant to that vulnerability
+    And there are no recipients relevant to that vulnerability
     When WP CVE detects the disclosed vulnerability
     Then no notification is sent
 
   Scenario: The same vulnerability is not reported twice
-    Given a CVE has already been reported to relevant subscribers
+    Given a CVE has already been reported to relevant recipients
     When WP CVE re-scans public sources and finds the same CVE
-    Then no duplicate notification is sent to those subscribers
+    Then no duplicate notification is sent to those recipients
