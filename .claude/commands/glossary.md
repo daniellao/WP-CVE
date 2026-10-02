@@ -59,10 +59,10 @@ For project terms, the source line is:
 
 Separate entries with one blank line.
 
-After writing the file, report to the user (not in the file), in the same neutral tone:
+### Examples
 
-- **Added, changed and removed terms**, with a one-line reason for each.
-- **Abbreviations to replace** in the specification, with file and line.
-- **Synonym/homonym conflicts** and **potentially misleading names**, with a suggested single term.
-- **Unverified definitions** whose official wording could not be confirmed.
-- A reminder that the relevant stakeholders must agree to each definition before the glossary is final.
+The Volere template gives these two glossary examples. The first shows a term used in a narrower sense than usual; the second shows an acronym defined in full.
+
+> **Truck:** a vehicle used for spreading de-icing products on roads. Here, "truck" is not used to refer to vehicles that transport goods.
+>
+> **BIS:** Business Intelligence Service. The department led by Steven Peters that provides business intelligence to the rest of the organization.
