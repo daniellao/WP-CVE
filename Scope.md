@@ -1,4 +1,4 @@
-# WP CVE Product Scope
+# WP CVE product scope
 
 ## Product boundary
 

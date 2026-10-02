@@ -24,7 +24,7 @@ The rules below summarize two sources, which are the authority for content and n
    - An actor is a stick man figure with its name below it (3.56.2).
    - An association between an actor and a use case is a solid line (3.57.2, 3.58.2). It is the only relationship between actors and use cases; actors relate to each other only by generalization.
    - A rectangle with the system name may enclose the use cases as the system boundary (3.54.2, Figure 3-52).
-   - Use case names follow the capitalization of classifiers (3.55.4), actor names that of types and classes (3.56.4). Figure 3-52 uses sentence case for use cases ("Check status") and title case for actors ("Shipping Clerk").
+   - Use case names follow the capitalization of classifiers (3.55.4), actor names that of types and classes (3.56.4). This project uses sentence case for both use case and actor names ("Check status", "Application manager"); title case is not used.
 
 ## Task
 
@@ -50,10 +50,12 @@ Existing files are updated in place; their current state, including manual edits
 
 ## Output format
 
+All headings, names and labels in `Scope.md` and the diagram are in sentence case, never title case: only the first word, names and acronyms are capitalized ("Application manager", "Email service", "CVE API").
+
 ### `Scope.md`
 
 ```
-# WP CVE Product Scope
+# WP CVE product scope
 
 ## Product boundary
 
@@ -84,7 +86,7 @@ A standalone SVG in UML 1.5 notation, laid out as in Figure 3-52:
 - **Canvas:** black on white, no border, no other colors.
 - **System boundary:** one rectangle, 1px black stroke, no fill, enclosing all use cases, with `WP CVE` centered at the top inside it in bold.
 - **Use cases:** white ellipses, 1px black stroke, stacked vertically and centered in the rectangle, each sized to fit only the use case name in bold (two lines where needed). No identifiers.
-- **Actors:** stick man figures (head, body, arms, two legs), 1px black stroke, with the name in bold title case centered below. Actors that start a use case are on the left; systems the product calls on are on the right. No label touches another figure.
+- **Actors:** stick man figures (head, body, arms, two legs), 1px black stroke, with the name in bold sentence case centered below (as in the table: "Application manager", "Email service"). Actors that start a use case are on the left; systems the product calls on are on the right. No label touches another figure.
 - **Associations:** thin solid black lines between each actor and its use cases, ending a few pixels short of both symbols. No arrowheads, dashed lines or lines between actors.
 - **Text:** `Helvetica, Arial, sans-serif`, bold. The `<svg>` element has a `viewBox`, `width`, `height`, `role="img"` and `aria-label="product-scope-diagram"`, and its first child is `<title>product-scope-diagram</title>`. The file name, the image title and the alt text in `Scope.md` are always `product-scope-diagram`.
 - **Layout:** use cases are ordered to minimize crossing lines. The SVG is rendered (for example with `msedge --headless --screenshot`) and inspected before finishing.

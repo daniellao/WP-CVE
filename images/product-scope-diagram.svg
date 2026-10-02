@@ -33,7 +33,7 @@
 <line x1="112" y1="220" x2="168" y2="220" stroke="#000000" stroke-width="1" fill="none"/>
 <line x1="140" y1="250" x2="108" y2="282" stroke="#000000" stroke-width="1" fill="none"/>
 <line x1="140" y1="250" x2="172" y2="282" stroke="#000000" stroke-width="1" fill="none"/>
-<text x="140" y="308" font-size="18" text-anchor="middle" fill="#000000">Application Manager</text>
+<text x="140" y="308" font-size="18" text-anchor="middle" fill="#000000">Application manager</text>
 <circle cx="140" cy="508" r="9" fill="#ffffff" stroke="#000000" stroke-width="1"/>
 <line x1="140" y1="517" x2="140" y2="560" stroke="#000000" stroke-width="1" fill="none"/>
 <line x1="112" y1="530" x2="168" y2="530" stroke="#000000" stroke-width="1" fill="none"/>
@@ -45,13 +45,13 @@
 <line x1="682" y1="280" x2="738" y2="280" stroke="#000000" stroke-width="1" fill="none"/>
 <line x1="710" y1="310" x2="678" y2="342" stroke="#000000" stroke-width="1" fill="none"/>
 <line x1="710" y1="310" x2="742" y2="342" stroke="#000000" stroke-width="1" fill="none"/>
-<text x="710" y="368" font-size="18" text-anchor="middle" fill="#000000">Email Service</text>
+<text x="710" y="368" font-size="18" text-anchor="middle" fill="#000000">Email service</text>
 <circle cx="710" cy="408" r="9" fill="#ffffff" stroke="#000000" stroke-width="1"/>
 <line x1="710" y1="417" x2="710" y2="460" stroke="#000000" stroke-width="1" fill="none"/>
 <line x1="682" y1="430" x2="738" y2="430" stroke="#000000" stroke-width="1" fill="none"/>
 <line x1="710" y1="460" x2="678" y2="492" stroke="#000000" stroke-width="1" fill="none"/>
 <line x1="710" y1="460" x2="742" y2="492" stroke="#000000" stroke-width="1" fill="none"/>
-<text x="710" y="518" font-size="18" text-anchor="middle" fill="#000000">SMS Service</text>
+<text x="710" y="518" font-size="18" text-anchor="middle" fill="#000000">SMS service</text>
 <circle cx="710" cy="558" r="9" fill="#ffffff" stroke="#000000" stroke-width="1"/>
 <line x1="710" y1="567" x2="710" y2="610" stroke="#000000" stroke-width="1" fill="none"/>
 <line x1="682" y1="580" x2="738" y2="580" stroke="#000000" stroke-width="1" fill="none"/>
