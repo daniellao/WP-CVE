@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 720" width="820" height="720" font-family="Helvetica, Arial, sans-serif" font-weight="700" role="img" aria-label="product-scope-diagram">
+<title>product-scope-diagram</title>
+<rect width="820" height="720" fill="#ffffff"/>
+<rect x="290" y="30" width="320" height="660" fill="none" stroke="#000000" stroke-width="1"/>
+<text x="450.0" y="60" font-size="18" text-anchor="middle" fill="#000000">WP CVE</text>
+<line x1="176.0" y1="228.0" x2="374.7" y2="149.7" stroke="#000000" stroke-width="1"/>
+<line x1="176.0" y1="228.0" x2="362.5" y2="219.2" stroke="#000000" stroke-width="1"/>
+<line x1="176.0" y1="228.0" x2="374.3" y2="287.3" stroke="#000000" stroke-width="1"/>
+<line x1="176.0" y1="228.0" x2="398.5" y2="371.8" stroke="#000000" stroke-width="1"/>
+<line x1="176.0" y1="538.0" x2="317.0" y2="539.0" stroke="#000000" stroke-width="1"/>
+<line x1="674.0" y1="288.0" x2="484.7" y2="501.0" stroke="#000000" stroke-width="1"/>
+<line x1="674.0" y1="438.0" x2="521.4" y2="507.5" stroke="#000000" stroke-width="1"/>
+<line x1="674.0" y1="588.0" x2="556.0" y2="562.7" stroke="#000000" stroke-width="1"/>
+<line x1="674.0" y1="288.0" x2="508.8" y2="374.3" stroke="#000000" stroke-width="1"/>
+<line x1="674.0" y1="438.0" x2="537.7" y2="417.9" stroke="#000000" stroke-width="1"/>
+<ellipse cx="450.0" cy="120" rx="110.0" ry="34" fill="#ffffff" stroke="#000000" stroke-width="1"/>
+<text x="450.0" y="116" font-size="16" text-anchor="middle" fill="#000000">Manage recipient</text>
+<text x="450.0" y="136" font-size="16" text-anchor="middle" fill="#000000">profiles</text>
+<ellipse cx="450.0" cy="215" rx="80.0" ry="34" fill="#ffffff" stroke="#000000" stroke-width="1"/>
+<text x="450.0" y="211" font-size="16" text-anchor="middle" fill="#000000">Manage CVE</text>
+<text x="450.0" y="231" font-size="16" text-anchor="middle" fill="#000000">feeds</text>
+<ellipse cx="450.0" cy="310" rx="85.0" ry="34" fill="#ffffff" stroke="#000000" stroke-width="1"/>
+<text x="450.0" y="306" font-size="16" text-anchor="middle" fill="#000000">Inspect the</text>
+<text x="450.0" y="326" font-size="16" text-anchor="middle" fill="#000000">audit log</text>
+<ellipse cx="450.0" cy="405" rx="85.0" ry="34" fill="#ffffff" stroke="#000000" stroke-width="1"/>
+<text x="450.0" y="401" font-size="16" text-anchor="middle" fill="#000000">Send a test</text>
+<text x="450.0" y="421" font-size="16" text-anchor="middle" fill="#000000">message</text>
+<ellipse cx="450.0" cy="540" rx="125.0" ry="34" fill="#ffffff" stroke="#000000" stroke-width="1"/>
+<text x="450.0" y="536" font-size="16" text-anchor="middle" fill="#000000">Check CVE feeds and</text>
+<text x="450.0" y="556" font-size="16" text-anchor="middle" fill="#000000">notify recipients</text>
+<circle cx="140" cy="198" r="9" fill="#ffffff" stroke="#000000" stroke-width="1"/>
+<line x1="140" y1="207" x2="140" y2="250" stroke="#000000" stroke-width="1" fill="none"/>
+<line x1="112" y1="220" x2="168" y2="220" stroke="#000000" stroke-width="1" fill="none"/>
+<line x1="140" y1="250" x2="108" y2="282" stroke="#000000" stroke-width="1" fill="none"/>
+<line x1="140" y1="250" x2="172" y2="282" stroke="#000000" stroke-width="1" fill="none"/>
+<text x="140" y="308" font-size="18" text-anchor="middle" fill="#000000">Application Manager</text>
+<circle cx="140" cy="508" r="9" fill="#ffffff" stroke="#000000" stroke-width="1"/>
+<line x1="140" y1="517" x2="140" y2="560" stroke="#000000" stroke-width="1" fill="none"/>
+<line x1="112" y1="530" x2="168" y2="530" stroke="#000000" stroke-width="1" fill="none"/>
+<line x1="140" y1="560" x2="108" y2="592" stroke="#000000" stroke-width="1" fill="none"/>
+<line x1="140" y1="560" x2="172" y2="592" stroke="#000000" stroke-width="1" fill="none"/>
+<text x="140" y="618" font-size="18" text-anchor="middle" fill="#000000">Time</text>
+<circle cx="710" cy="258" r="9" fill="#ffffff" stroke="#000000" stroke-width="1"/>
+<line x1="710" y1="267" x2="710" y2="310" stroke="#000000" stroke-width="1" fill="none"/>
+<line x1="682" y1="280" x2="738" y2="280" stroke="#000000" stroke-width="1" fill="none"/>
+<line x1="710" y1="310" x2="678" y2="342" stroke="#000000" stroke-width="1" fill="none"/>
+<line x1="710" y1="310" x2="742" y2="342" stroke="#000000" stroke-width="1" fill="none"/>
+<text x="710" y="368" font-size="18" text-anchor="middle" fill="#000000">Email Service</text>
+<circle cx="710" cy="408" r="9" fill="#ffffff" stroke="#000000" stroke-width="1"/>
+<line x1="710" y1="417" x2="710" y2="460" stroke="#000000" stroke-width="1" fill="none"/>
+<line x1="682" y1="430" x2="738" y2="430" stroke="#000000" stroke-width="1" fill="none"/>
+<line x1="710" y1="460" x2="678" y2="492" stroke="#000000" stroke-width="1" fill="none"/>
+<line x1="710" y1="460" x2="742" y2="492" stroke="#000000" stroke-width="1" fill="none"/>
+<text x="710" y="518" font-size="18" text-anchor="middle" fill="#000000">SMS Service</text>
+<circle cx="710" cy="558" r="9" fill="#ffffff" stroke="#000000" stroke-width="1"/>
+<line x1="710" y1="567" x2="710" y2="610" stroke="#000000" stroke-width="1" fill="none"/>
+<line x1="682" y1="580" x2="738" y2="580" stroke="#000000" stroke-width="1" fill="none"/>
+<line x1="710" y1="610" x2="678" y2="642" stroke="#000000" stroke-width="1" fill="none"/>
+<line x1="710" y1="610" x2="742" y2="642" stroke="#000000" stroke-width="1" fill="none"/>
+<text x="710" y="668" font-size="18" text-anchor="middle" fill="#000000">CVE API</text>
+</svg>

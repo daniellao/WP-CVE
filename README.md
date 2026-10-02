@@ -8,6 +8,8 @@ WP CVE notifies relevant stakeholders when vulnerabilities are discovered in Wor
 
 Dedicated email and SMS services are used to ensure timely delivery. A lightweight database keeps track of message delivery for human inspection in the form of an audit log.
 
+The product boundary and the product use cases are described in [Scope.md](Scope.md).
+
 ## CVE API
 
 The CVE API is used to easily retrieve information on a single CVE or a collection of CVE from the NVD. The NVD contains CVE records. Because of this, its APIs enforce offset-based pagination to answer requests for large collections. Through a series of smaller “chunked” responses controlled by an offset `startIndex` and a page limit `resultsPerPage` users may page through all the CVE in the NVD.
