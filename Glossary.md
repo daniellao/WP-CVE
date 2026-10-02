@@ -9,7 +9,7 @@ A person who is authorized to log in to WP CVE to manage recipient profiles and 
 *Source:* project definition ([recipient_management.feature](features/recipient_management.feature), [cve_feeds.feature](features/cve_feeds.feature), [audit_log.feature](features/audit_log.feature), [test_message.feature](features/test_message.feature))
 
 **Audit log**
-"A chronological record of system activities, including records of system accesses and operations performed in a given period." In WP CVE, the audit log is narrower: it holds only delivery records, which application managers inspect to check whether vulnerability notifications and test messages reached their recipients.
+"A chronological record of system activities, including records of system accesses and operations performed in a given period." Here, "audit log" is not used to refer to a record of all system activities: it holds only delivery records, which application managers inspect to check whether vulnerability notifications and test messages reached their recipients.
 *Source:* [NIST CSRC Glossary, from CNSSI 4009-2022 (as used in NIST SP 800-53 Rev. 5)](https://csrc.nist.gov/glossary/term/audit_log); project definition ([README](README.md), [audit_log.feature](features/audit_log.feature))
 
 **Channel**
@@ -21,11 +21,11 @@ A way of delivering a message to a recipient. WP CVE has two channels: email and
 *Source:* [NIST CSRC Glossary, from NIST SP 800-128](https://csrc.nist.gov/glossary/term/common_platform_enumeration)
 
 **CPE 2.3**
-Version 2.3 of CPE, defined in NISTIR 7695, *Common Platform Enumeration: Naming Specification Version 2.3*. Every CPE name in WP CVE uses this version.
+Version 2.3 of CPE, defined in National Institute of Standards and Technology Interagency Report (NISTIR) 7695, *Common Platform Enumeration: Naming Specification Version 2.3*. Every CPE name in WP CVE uses this version.
 *Source:* [NISTIR 7695](https://nvlpubs.nist.gov/nistpubs/Legacy/IR/nistir7695.pdf)
 
 **CPE component**
-One of the 11 values in a CPE name that follow the `cpe:2.3` prefix: "The 11 values that follow are referred to as the CPE components." In order, they are part, vendor, product, version, update, edition, language, sw_edition, target_sw, target_hw and other. NISTIR 7695 calls these values "attributes".
+One of the 11 values in a CPE name that follow the `cpe:2.3` prefix: "The 11 values that follow are referred to as the CPE components." In order, they are part, vendor, product, version, update, edition, language, sw_edition, target_sw, target_hw and other. The CPE 2.3 specification calls these values "attributes".
 *Source:* [NVD Developers – Vulnerabilities API](https://nvd.nist.gov/developers/vulnerabilities); [NISTIR 7695, §5.2](https://nvlpubs.nist.gov/nistpubs/Legacy/IR/nistir7695.pdf)
 
 **CPE name**
@@ -53,15 +53,15 @@ The CVE API request parameter that holds a CPE name: "This parameter returns all
 *Source:* [NVD Developers – Vulnerabilities API](https://nvd.nist.gov/developers/vulnerabilities)
 
 **CVE (Common Vulnerabilities and Exposures)**
-"The CVE trademark and the name Common Vulnerabilities and Exposures." In this specification, "a CVE" is used in a narrower sense: one CVE Record, that is, one publicly disclosed vulnerability and its data as returned by the CVE API. The plural is also written "CVE".
+"The CVE trademark and the name Common Vulnerabilities and Exposures." Here, "a CVE" is not used to refer to the trademark or the program: it means one CVE Record, that is, one publicly disclosed vulnerability and its data as returned by the CVE API. The plural is also written "CVE".
 *Source:* [CVE Program Glossary](https://www.cve.org/ResourcesSupport/Glossary?activeTerm=glossaryCVE); project definition ([README](README.md))
 
 **CVE API**
-The NVD web service that WP CVE queries for CVE: "The CVE API is used to easily retrieve information on a single CVE or a collection of CVE from the NVD." Base URL: `https://services.nvd.nist.gov/rest/json/cves/2.0`.
+The NVD web service that WP CVE queries for CVE: "The CVE API is used to easily retrieve information on a single CVE or a collection of CVE from the NVD." Base URL (Uniform Resource Locator): `https://services.nvd.nist.gov/rest/json/cves/2.0`. Here, "CVE API" is not used to refer to the services of the CVE Program at cve.org.
 *Source:* [NVD Developers – Vulnerabilities API](https://nvd.nist.gov/developers/vulnerabilities)
 
 **CVE feed**
-A configured connection to the CVE API. A CVE feed holds exactly one CPE name and has at least one and at most two recipient profiles assigned to it. WP CVE polls each CVE feed and pages through all results.
+A configured connection to the CVE API. A CVE feed holds exactly one CPE name and has at least one and at most two recipient profiles assigned to it. WP CVE polls each CVE feed and pages through all results. Here, "CVE feed" is not used to refer to the data feeds published by the NVD.
 *Source:* project definition ([README](README.md), [cve_feeds.feature](features/cve_feeds.feature))
 
 **CVE ID (CVE Identifier)**
@@ -85,7 +85,7 @@ A second vulnerability notification about the same CVE to the same recipient pro
 *Source:* project definition ([cve_notifications.feature](features/cve_notifications.feature))
 
 **Email address**
-"An addr-spec is a specific Internet identifier that contains a locally interpreted string followed by the at-sign character ("@", ASCII value 64) followed by an Internet domain." Example: `name@example.com`.
+"An addr-spec is a specific Internet identifier that contains a locally interpreted string followed by the at-sign character ("@", ASCII value 64) followed by an Internet domain." ASCII stands for American Standard Code for Information Interchange. Example: `name@example.com`.
 *Source:* [RFC 5322, §3.4.1](https://www.rfc-editor.org/rfc/rfc5322.html)
 
 **Email service**
@@ -121,7 +121,7 @@ A person who receives vulnerability notifications and test messages from WP CVE.
 *Source:* project definition ([README](README.md), [delivery.feature](features/delivery.feature))
 
 **Recipient profile**
-The stored record for one recipient, holding their phone number, email address and subscribed channels. Each recipient has one recipient profile. A recipient receives vulnerability notifications only while their recipient profile is assigned to a CVE feed. A recipient profile cannot be removed while it is the only one assigned to a CVE feed.
+The stored record for one recipient, holding their phone number, email address and subscribed channels. Each recipient has one recipient profile.
 *Source:* project definition ([README](README.md), [recipient_management.feature](features/recipient_management.feature))
 
 **resultsPerPage**
@@ -137,7 +137,7 @@ The external, dedicated service that WP CVE uses to deliver SMS messages.
 *Source:* project definition ([README](README.md), [delivery.feature](features/delivery.feature))
 
 **Stakeholder**
-"Individual or organization having a right, share, claim, or interest in a system or in its possession of characteristics that meet their needs and expectations."
+"Individual or organization having a right, share, claim, or interest in a system or in its possession of characteristics that meet their needs and expectations." Here, "stakeholder" is not used to refer to recipients.
 *Source:* [NIST CSRC Glossary, from NIST SP 800-160v1r1 / ISO/IEC/IEEE 15288:2015](https://csrc.nist.gov/glossary/term/stakeholder)
 
 **startIndex**
@@ -145,7 +145,7 @@ The CVE API request parameter that sets the offset: "This parameter specifies th
 *Source:* [NVD Developers – Vulnerabilities API](https://nvd.nist.gov/developers/vulnerabilities)
 
 **Test message**
-A message that an application manager sends to a recipient profile to confirm its contact details and CVE feed assignments. It is delivered over the same email and SMS services as a vulnerability notification, lists the CVE feeds the recipient profile is assigned to, and is recorded in the audit log as a delivery record marked as a test.
+A message that an application manager sends to a recipient profile to confirm its contact details and CVE feed assignments. It lists the CVE feeds the recipient profile is assigned to and is recorded in the audit log marked as a test.
 *Source:* project definition ([README](README.md), [test_message.feature](features/test_message.feature))
 
 **Vulnerability**
@@ -164,6 +164,6 @@ In a CPE name: "When used alone, the asterisk ("*") represents the logical value
 "WordPress is open source software." It is the product whose publicly disclosed vulnerabilities WP CVE reports.
 *Source:* [WordPress.org – About](https://wordpress.org/about/); project definition ([README](README.md))
 
-**WP CVE**
-The application described in this specification. It polls the CVE API and sends vulnerability notifications about publicly disclosed vulnerabilities in WordPress. "WP" stands for WordPress.
+**WP CVE (WordPress CVE)**
+The application described in this specification. It polls the CVE API and sends vulnerability notifications about publicly disclosed vulnerabilities in WordPress.
 *Source:* project definition ([README](README.md))
