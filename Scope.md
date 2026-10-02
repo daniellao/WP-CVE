@@ -19,7 +19,7 @@
 - **Trigger:** an application manager adds, edits or removes a recipient profile.
 - **Actors:** application manager.
 - **Precondition:** the user is logged in as an application manager.
-- **Outcome:** the recipient profile is saved, updated or removed, and the information of the recipient is processed in a GDPR friendly way. A recipient profile that is the only profile assigned to a CVE feed cannot be removed.
+- **Outcome:** the recipient profile is saved, updated or removed, and the information of the recipient is stored and removed in a GDPR friendly way. A recipient profile that is the only profile assigned to a CVE feed cannot be removed. Users who are not logged in as an application manager are denied these actions.
 
 ### PUC-2 Manage CVE feeds
 
@@ -33,7 +33,7 @@
 - **Trigger:** the scheduled time to poll the CVE feeds is reached.
 - **Actors:** time, CVE API, email service, SMS service.
 - **Precondition:** at least one CVE feed is configured.
-- **Outcome:** each CVE that matches the CPE name of a CVE feed and has not been reported previously is sent to every recipient profile assigned to that CVE feed, through the channels to which the recipient profile is subscribed. Every delivery attempt, whether successful or failed, is recorded in the audit log. A CVE that matches no configured CVE feed is not sent to any recipient.
+- **Outcome:** the results of each CVE feed are retrieved from the CVE API in pages, using `startIndex` and `resultsPerPage`, until the whole collection has been retrieved. A vulnerability notification for each CVE that matches the CPE name of a CVE feed and has not been reported previously is sent to every recipient profile assigned to that CVE feed, through the channels to which the recipient profile is subscribed. Every delivery attempt, whether successful or failed, is recorded in the audit log. A CVE that matches no configured CVE feed is not sent to any recipient.
 
 ### PUC-4 Send a test message
 
