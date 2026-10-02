@@ -14,7 +14,7 @@ A person who is authorized to log in to WP CVE to manage recipient profiles and 
 
 **Channel**
 A way of delivering a message to a recipient. WP CVE has two channels: email and SMS. A recipient profile records which channels its recipient is subscribed to.
-*Source:* project definition ([README](README.md), [delivery.feature](features/delivery.feature))
+*Source:* project definition ([README](README.md), [delivery.feature](features/delivery.feature), [recipient_management.feature](features/recipient_management.feature))
 
 **CPE (Common Platform Enumeration)**
 "A SCAP specification that provides a standard naming convention for operating systems, hardware, and applications for the purpose of providing consistent, easily parsed names that can be shared by multiple parties and solutions to refer to the same specific platform type." SCAP stands for Security Content Automation Protocol.
@@ -30,7 +30,7 @@ One of the 11 values in a CPE name that follow the `cpe:2.3` prefix: "The 11 val
 
 **CPE name**
 "A CPE Name is a string of characters comprised of 13 colon separated values that describe a product." The first two values are always `cpe` and `2.3`. Example: `cpe:2.3:a:wordpress:wordpress:6.4.2:*:*:*:*:*:*:*`. In WP CVE, each CVE feed holds exactly one CPE name, and the part, vendor, product and version components must not be the wildcard `*`.
-*Source:* [NVD Developers – Vulnerabilities API](https://nvd.nist.gov/developers/vulnerabilities); project definition ([README](README.md), [cve_feeds.feature](features/cve_feeds.feature))
+*Source:* [NVD Developers – Vulnerabilities API](https://nvd.nist.gov/developers/vulnerabilities); project definition ([cve_feeds.feature](features/cve_feeds.feature))
 
 **CPE part**
 "The part attribute SHALL have one of these three string values: The value "a", when the WFN is for a class of applications. The value "o", when the WFN is for a class of operating systems. The value "h", when the WFN is for a class of hardware devices." WFN stands for well-formed CPE name. Example: `a` for WordPress.
@@ -61,8 +61,8 @@ The NVD web service that WP CVE queries for CVE: "The CVE API is used to easily 
 *Source:* [NVD Developers – Vulnerabilities API](https://nvd.nist.gov/developers/vulnerabilities)
 
 **CVE feed**
-A configured connection to the CVE API. A CVE feed holds exactly one CPE name and has at least one and at most two recipient profiles assigned to it. WP CVE polls each CVE feed and pages through all results. Here, "CVE feed" is not used to refer to the data feeds published by the NVD.
-*Source:* project definition ([README](README.md), [cve_feeds.feature](features/cve_feeds.feature))
+A configured connection to the CVE API. A CVE feed holds exactly one CPE name, which is the only place a product is configured, and has at least one and at most two recipient profiles assigned to it. WP CVE polls each CVE feed and pages through all results. Here, "CVE feed" is not used to refer to the data feeds published by the NVD.
+*Source:* project definition ([cve_feeds.feature](features/cve_feeds.feature))
 
 **CVE ID (CVE Identifier)**
 "An alphanumeric string that identifies a Publicly Disclosed vulnerability. The format of the CVE ID is defined in the CVE Record Format." Example: `CVE-2024-12345`.
@@ -101,28 +101,36 @@ Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 Apr
 *Source:* [NIST CSRC Glossary, from NISTIR 7511 Rev. 4](https://csrc.nist.gov/glossary/term/national_vulnerability_database)
 
 **Offset-based pagination**
-The method the CVE API uses to return large collections in parts: "Through a series of smaller "chunked" responses controlled by an offset startIndex and a page limit resultsPerPage users may page through all the CVE in the NVD."
+The method the CVE API uses to return large collections in parts: "Through a series of smaller “chunked” responses controlled by an offset startIndex and a page limit resultsPerPage users may page through all the CVE in the NVD."
 *Source:* [NVD Developers – Vulnerabilities API](https://nvd.nist.gov/developers/vulnerabilities)
 
 **Phone number**
 The telephone number stored in a recipient profile, to which the SMS service delivers SMS messages.
-*Source:* project definition ([README](README.md), [delivery.feature](features/delivery.feature))
+*Source:* project definition ([delivery.feature](features/delivery.feature), [recipient_management.feature](features/recipient_management.feature))
 
 **Poll / re-poll**
 To request all CVE for a CVE feed's CPE name from the CVE API, using offset-based pagination until every result has been retrieved. A re-poll is a later poll of the same CVE feed.
-*Source:* project definition ([README](README.md), [cve_feeds.feature](features/cve_feeds.feature), [cve_notifications.feature](features/cve_notifications.feature))
+*Source:* project definition ([cve_feeds.feature](features/cve_feeds.feature), [cve_notifications.feature](features/cve_notifications.feature))
 
 **Publicly disclosed**
 "The state in which non-trivial information about a vulnerability is publicly available."
 *Source:* [CVE Program Glossary](https://www.cve.org/ResourcesSupport/Glossary?activeTerm=glossaryPubliclyDisclosed)
+
+**PUC (Product use case)**
+The identifier prefix of a product use case: a complete unit of functionality that delivers a result to an actor. Each scenario carries the identifier of its product use case as a `@PUC-n` tag. Example: `PUC-3`.
+*Source:* project definition ([Scope.md](Scope.md), [cve_feeds.feature](features/cve_feeds.feature))
 
 **Recipient**
 A person who receives vulnerability notifications and test messages from WP CVE.
 *Source:* project definition ([README](README.md), [delivery.feature](features/delivery.feature))
 
 **Recipient profile**
-The stored record for one recipient, holding their phone number, email address and subscribed channels. Each recipient has one recipient profile.
+The stored record for one recipient, holding their phone number, email address and subscribed channels, and no CPE name. Each recipient has one recipient profile.
 *Source:* project definition ([README](README.md), [recipient_management.feature](features/recipient_management.feature))
+
+**REQ (Requirement)**
+The identifier prefix of a requirement. Each scenario carries a permanent three-digit identifier as a `@REQ-###` tag, which is never renumbered or reused. Example: `REQ-009`.
+*Source:* project definition ([cve_feeds.feature](features/cve_feeds.feature))
 
 **resultsPerPage**
 The CVE API request parameter that sets the page size: "This parameter specifies the maximum number of CVE records to be returned in a single API response."
