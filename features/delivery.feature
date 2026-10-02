@@ -3,6 +3,7 @@ Feature: Notification delivery via email and SMS
   I want to receive vulnerability notifications through email or SMS
   So that I am reliably and promptly informed
 
+  @REQ-013 @PUC-3
   Scenario: Notification delivered by email
     Given a recipient profile with an email address on file
     And that recipient profile is subscribed to receive email notifications
@@ -10,6 +11,7 @@ Feature: Notification delivery via email and SMS
     Then the notification is delivered via the dedicated email service
     And a delivery record is written to the audit log
 
+  @REQ-014 @PUC-3
   Scenario: Notification delivered by SMS
     Given a recipient profile with a phone number on file
     And that recipient profile is subscribed to receive SMS notifications
@@ -17,6 +19,7 @@ Feature: Notification delivery via email and SMS
     Then the notification is delivered via the dedicated SMS service
     And a delivery record is written to the audit log
 
+  @REQ-015 @PUC-3
   Scenario: Email delivery failure is recorded
     Given a recipient profile with an email address on file
     When a vulnerability notification fails to deliver via the email service

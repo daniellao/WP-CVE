@@ -6,13 +6,13 @@
 
 ## Product use cases
 
-| Use case | Name | Actors | Feature files |
-|---|---|---|---|
-| PUC-1 | Manage recipient profiles | Application manager | [recipient_management.feature](features/recipient_management.feature) |
-| PUC-2 | Manage CVE feeds | Application manager | [cve_feeds.feature](features/cve_feeds.feature) |
-| PUC-3 | Check CVE feeds and notify recipients | Time, CVE API, email service, SMS service | [cve_notifications.feature](features/cve_notifications.feature), [delivery.feature](features/delivery.feature), [audit_log.feature](features/audit_log.feature), [cve_feeds.feature](features/cve_feeds.feature) |
-| PUC-4 | Send a test message | Application manager, email service, SMS service | [test_message.feature](features/test_message.feature) |
-| PUC-5 | Inspect the audit log | Application manager | [audit_log.feature](features/audit_log.feature) |
+| Use case | Name | Actors | Requirements | Feature files |
+|---|---|---|---|---|
+| PUC-1 | Manage recipient profiles | Application manager | REQ-016, REQ-017, REQ-018, REQ-019, REQ-020 | [recipient_management.feature](features/recipient_management.feature) |
+| PUC-2 | Manage CVE feeds | Application manager | REQ-004, REQ-005, REQ-006, REQ-007, REQ-008 | [cve_feeds.feature](features/cve_feeds.feature) |
+| PUC-3 | Check CVE feeds and notify recipients | Time, CVE API, email service, SMS service | REQ-001, REQ-002, REQ-009, REQ-010, REQ-011, REQ-012, REQ-013, REQ-014, REQ-015 | [cve_notifications.feature](features/cve_notifications.feature), [delivery.feature](features/delivery.feature), [audit_log.feature](features/audit_log.feature), [cve_feeds.feature](features/cve_feeds.feature) |
+| PUC-4 | Send a test message | Application manager, email service, SMS service | REQ-021, REQ-022, REQ-023 | [test_message.feature](features/test_message.feature) |
+| PUC-5 | Inspect the audit log | Application manager | REQ-003 | [audit_log.feature](features/audit_log.feature) |
 
 ### PUC-1 Manage recipient profiles
 

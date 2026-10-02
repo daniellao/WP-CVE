@@ -42,7 +42,7 @@ Review the provided requirements, detect and classify relationships or issues be
 ## Execution steps
 
 1. Parse the input and normalize whitespace; identify individual requirement lines/statements.
-2. Preserve existing requirement IDs; generate `REQ-###` identifiers for any requirement lacking one.
+2. Identify each Gherkin scenario by its `@REQ-###` tag and note its `@PUC-n` tag (the product use case). Preserve any other existing requirement IDs. Assign temporary `TMP-###` identifiers to requirements lacking one (such as README statements and untagged scenarios); never generate `REQ-###` identifiers, which are permanent and assigned only through the scenario tags.
 3. Perform pairwise comparison across all requirements, considering semantics, values, ranges, conditions, roles, versions, and units.
 4. Classify each detected relationship and draft an improvement suggestion.
 5. Group findings by relationship type, sort sensibly within each group, and render the final output.
@@ -51,8 +51,10 @@ Review the provided requirements, detect and classify relationships or issues be
 
 For each detected pair, within its relationship-type group:
 
-- **Related Requirements**: IDs and full, exact requirement text of both requirements.
+- **Related Requirements**: IDs (with the `@PUC-n` tag of each tagged scenario) and full, exact requirement text of both requirements.
 - **Type of Relationship/Issue**: category — subtype.
 - **Improvement Suggestion**: 2–3 sentences of actionable guidance to resolve or clarify the issue.
 
 Separate each group with a horizontal rule (`---`). Do not include groups with no findings.
+
+After the groups, list under **Untagged requirements** every `TMP-###` identifier with its source file, so that scenarios can receive a permanent `@REQ-###` tag. Omit this list when every requirement is tagged.

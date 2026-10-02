@@ -32,10 +32,13 @@ Produce `Scope.md` (the product scope) and `images/product-scope-diagram.svg` (t
 
 Existing files are updated in place; their current state, including manual edits, is intended. Existing identifiers (`PUC-1`, `PUC-2`, …), names and wording are kept unless wrong, outdated or unsupported by the specification. A new product use case receives the next free identifier; existing identifiers are never renumbered.
 
+The `features/*.feature` files also receive the scenario tags (see Scenario tags); tags are the only edit made to feature files.
+
 ## Rules
 
 - **Specification only.** Every actor, product use case, trigger, precondition and outcome is derived from the README and feature files. Behavior is not invented; gaps are reported (see Report).
 - **One product use case per actor goal.** A product use case is a complete unit of functionality that delivers a result to an actor. Scenarios are grouped by goal, not by feature file, and each scenario belongs to exactly one product use case.
+- **Scenario tags.** Each scenario carries two tags on the line above `Scenario:`, at the same indentation: `@REQ-### @PUC-n` (for example `@REQ-009 @PUC-3`). `@REQ-###` is the permanent requirement identifier: three digits, unique across all feature files, never renumbered or reused; the number of a deleted scenario is retired. `@PUC-n` is the product use case the scenario belongs to and is the stored mapping between scenarios and product use cases. Existing tags are kept unless wrong. An untagged scenario is grouped by the rules above and receives the next free `@REQ-###` (one above the highest number in use) and its `@PUC-n`.
 - **Actors.** An actor is a person or system outside the product that takes part in a product use case: a user who starts it, a system the product calls on, or time for a scheduled use case. A party reached only through another actor (for example, a recipient reached through the email service) is not an actor.
 - **Formal, concise tone.** `Scope.md` is read by stakeholders and developers. Statements are formal, factual and in the present tense, in the passive or third person, with no more words than required. No contractions, filler, repetition, conversational voice ("you", "we"), emphasis words ("simply", "just", "easily"), marketing language or informal phrasing. Terms follow `Glossary.md` and the specification.
 - **Content only.** No introduction, section numbers, references to the Volere template or UML, explanation of the diagram, open questions or links to individual Gherkin scenarios.
@@ -43,10 +46,10 @@ Existing files are updated in place; their current state, including manual edits
 ## Execution steps
 
 1. Read the specification, `Glossary.md`, `Scope.md` and `images/product-scope-diagram.svg` (if present).
-2. List the actors and the actor goal of each scenario; group the scenarios into product use cases.
+2. List the actors and the actor goal of each scenario; group the scenarios into product use cases, starting from the existing `@PUC-n` tags.
 3. Determine the actors, trigger, precondition and outcome of each product use case.
-4. Write `Scope.md` and draw `images/product-scope-diagram.svg`.
-5. Verify that each scenario maps to exactly one product use case, that the diagram, table and entries list the same actors and use cases, and that the diagram renders without overlapping labels.
+4. Tag untagged scenarios and correct wrong `@PUC-n` tags; write `Scope.md` and draw `images/product-scope-diagram.svg`.
+5. Verify that each scenario has exactly one `@REQ-###` and one `@PUC-n` tag, that no `@REQ-###` number occurs twice, that every `@PUC-n` exists in `Scope.md` and the "Requirements" column matches the tags, that the diagram, table and entries list the same actors and use cases, and that the diagram renders without overlapping labels.
 
 ## Output format
 
@@ -63,9 +66,9 @@ All headings, names and labels in `Scope.md` and the diagram are in sentence cas
 
 ## Product use cases
 
-| Use case | Name | Actors | Feature files |
-|---|---|---|---|
-| PUC-1 | <name> | <actors> | [<file>.feature](features/<file>.feature) |
+| Use case | Name | Actors | Requirements | Feature files |
+|---|---|---|---|---|
+| PUC-1 | <name> | <actors> | <REQ-### identifiers> | [<file>.feature](features/<file>.feature) |
 
 ### PUC-1 <name>
 
@@ -75,7 +78,7 @@ All headings, names and labels in `Scope.md` and the diagram are in sentence cas
 - **Outcome:** <the result, including the rules that constrain it>.
 ```
 
-- The table lists all product use cases in identifier order; "Feature files" links each feature file with a scenario of the use case.
+- The table lists all product use cases in identifier order; "Requirements" lists, as plain text in ascending order, every `@REQ-###` identifier of the scenarios tagged with the use case, separated by commas and without ranges ("REQ-001, REQ-002, REQ-009, REQ-010"); "Feature files" links each feature file with a scenario of the use case.
 - Each use case has a `###` entry with the four fields in this order; the precondition is omitted only when none applies.
 - Actors in the table are in sentence case ("Application manager, email service, SMS service"); in the entries, lowercase except names and acronyms ("application manager, email service, SMS service").
 
