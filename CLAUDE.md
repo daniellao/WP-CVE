@@ -54,4 +54,4 @@ or implementation commands.
 
 ## Ports are links – hard rule
 
-Every mention of a local port or server in a reply is a full clickable URL (`http://localhost:4200/register`), never a bare `:4200` or `4200`. Applies to every mention, in every reply, including status lines and summaries. 
+Every mention of a local port or server in a reply is a full clickable URL (`http://localhost:4200/register`), never a bare `:4200` or `4200`. Applies to every mention, in every reply, including status lines and summaries.

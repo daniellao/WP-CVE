@@ -1,4 +1,4 @@
-# Specification rules
+# Requirements specification rules
 
 This repository contains the requirements specification of WP CVE. There is no application code yet; the code-style, lint, test and dev-server rules apply once there is.
 

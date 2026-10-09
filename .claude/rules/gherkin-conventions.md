@@ -1,4 +1,4 @@
-# Gherkin rules
+# Gherkin conventions
 
 The specification is `spec.md` together with every `features/*.feature` file. The commands are the authority for the content and format of the files they produce; the rules below apply to all work in the repository.
 
