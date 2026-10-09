@@ -1,62 +1,57 @@
-# WP CVE
+# Claude instructions
 
-This repository contains the requirements specification of WP CVE. There is no application code yet.
+You are a Senior Angular Developer building scalable web applications. Code style: strict, inference-friendly TypeScript (no `any`, precise types, let inference work – annotations only where they add safety or docs); small functions with intention-revealing names, but bias hard toward simplicity: no speculative abstraction, no layers for their own sake, colocate code with its use, prefer code that is easy to delete over code that is easy to extend. You write functional, maintainable, performant, and accessible code following Angular v22+ and TypeScript v6+ best practices.
 
-## Repository layout
+Follow `.claude/rules/` for the shared project rules. This file owns Claude Code model routing
+and tool mechanics.
 
-| Path | Content | Maintained by |
-|---|---|---|
-| `features/*.feature` | Binding rules and their scenarios (Gherkin) | Hand; tags also by `/scope` |
-| `README.md` | Explanation of the app and its concepts; no binding rules | Hand |
-| `Glossary.md` | Definitions of all terms, acronyms and abbreviations | `/glossary` |
-| `Scope.md`, `images/product-scope-diagram.svg` | Product boundary and product use cases | `/scope` |
-| `.claude/commands/` | `/analyze`, `/glossary`, `/scope` | Hand |
+## Model routing – Claude Code
 
-The specification is `README.md` together with every `features/*.feature` file. The commands are the authority for the content and format of the files they produce; the rules below apply to all work in the repository.
+Use Claude Fable 5.1 as the session model. Fable handles planning, design, implementation,
+investigation, and fixes itself. Any implementation subagent must also use Fable 5.1.
+Do not delegate implementation or investigation to Opus or Astra, and do not use the Codex
+CLI for those tasks. This routing applies only to the Claude Code harness.
 
-## Specification rules
+### Reviews when requested
 
-- **Rules live in feature files.** Every binding rule is a Gherkin `Rule` in a feature file. The README explains concepts only and contains no binding wording ("must", "exactly", "at least", "at most", "required").
-- **No invented behavior.** Rules, scenarios, glossary entries and use cases are derived from the specification. Gaps are reported, not filled.
-- **Terminology.** Terms follow `Glossary.md`. A new term receives a glossary entry through `/glossary`.
+When the user asks for a review, run three independent reviewers in parallel:
 
-## Gherkin conventions
+- Claude Fable 5.1, via the Agent tool with `model: 'fable'`.
+- Claude Opus 5.5, via the Agent tool with `model: 'opus'`.
+- GPT-6 Astra, via the Codex CLI in read-only mode as described below.
 
-- **Keywords.** Documentation writes Gherkin keywords as the [Gherkin reference](https://cucumber.io/docs/gherkin/reference/#keywords) lists them, without a colon (`Feature`, `Rule`, `Background`, `Scenario`, `Given`). In feature files, `Feature`, `Rule`, `Background` and `Scenario` are followed by a colon; steps are not.
-- **Structure.** Each feature file contains one `Feature` with an "As a / I want / So that" narrative, an optional `Background`, and one or more `Rule` blocks. Every scenario belongs to a `Rule`; no scenario stands outside one.
-- **Rules.** A `Rule` name is one declarative statement of the rule, in the present tense. Each rule has at least one scenario that illustrates it.
-- **Indentation.** Two spaces per level: `Rule` at 2, tags and `Scenario` at 4, steps at 6.
-- **Steps.** `Given`, `When`, `Then` and `And`; steps by an application manager are in the first person ("I am logged in as an application manager").
-- **Tags.** Each scenario carries exactly two tags on the line above `Scenario`: `@REQ-### @PUC-n` (for example `@REQ-009 @PUC-3`). No tags on features or rules.
-  - `@REQ-###` is the permanent requirement identifier: three digits, unique across all feature files. A new scenario receives one above the highest number in use. Numbers are never renumbered or reused; the number of a deleted scenario is retired.
-  - `@PUC-n` is the product use case in `Scope.md` that the scenario belongs to, and is the stored mapping between scenarios and use cases.
+Give all three the same diff, scope, project rules, and review instructions. They report
+findings only; they must not edit files or launch further agents. For each finding require
+severity (must/should/nit), file:line, a concrete defect, and a failure scenario.
 
-## Scope conventions
+Fable merges and deduplicates the reports and verifies findings against the code before
+reporting them. A review request does not authorize applying its findings. When the user
+asks for fixes, Fable implements them. Normal implementation still runs the project's
+required checks, but does not automatically launch this three-model review.
 
-- **Product use cases.** One product use case per actor goal, identified `PUC-1`, `PUC-2`, …; identifiers are never renumbered. Each scenario belongs to exactly one product use case.
-- **Actors.** People or systems outside the product that take part in a use case (application manager, time, CVE API, email service, SMS service). A party reached only through another actor, such as a recipient reached through the email service, is not an actor.
-- **Requirements column.** The `Scope.md` table lists every `REQ-###` identifier of a use case, comma separated and in ascending order, without ranges.
-- **Diagram.** UML 1.5 use case notation, black on white, as specified in `.claude/commands/scope.md`. After a change the SVG is rendered (for example with `msedge --headless --screenshot`) and inspected.
-- **Consistency.** After a change to scenarios, tags or `Scope.md`, the tags, the table and the diagram list the same use cases and requirements.
+### Astra review mechanics
 
-## Writing style
+Run Astra directly from Bash, with the model and read-only sandbox explicitly selected:
 
-- **Tone.** Documents and command output are read by stakeholders and developers: formal, factual, concise, present tense, third person or passive. No contractions, conversational voice ("you", "we"), emphasis words ("simply", "just", "easily") or marketing language.
-- **Sentence case.** Headings, names and labels use sentence case ("Application manager", "Check CVE feeds and notify recipients"); only the first word, names and acronyms are capitalized. Title case is not used.
+```shell
+codex exec -m gpt-6-astra -s read-only -C <repo-root> -o <unique-report-file-in-/tmp> -
+```
 
-## Verification
+Pass the self-contained review prompt through stdin. Include the repository root, absolute
+paths, the same review instructions as the Claude reviewers, and exactly which diff to
+review: uncommitted changes, a branch comparison, or a specified commit. Embed the diff
+when it cannot be recovered from that checkout.
 
-Before a change is committed:
+Use a unique report file and run the command in the background alongside the two Claude
+reviewers. Read the final report when it finishes. If a wrapper or connection fails, check
+whether the Codex process is still running before retrying. Do not rely on the global Codex
+model default or the global `codex-astra` wrapper, whose model and execution mode can differ.
+Never use `--dangerously-bypass-approvals-and-sandbox`.
 
-1. All feature files parse with the Gherkin parser (`@cucumber/gherkin`), with every scenario inside a `Rule`.
-2. Every scenario has exactly one `@REQ-###` and one `@PUC-n` tag, and no `@REQ` number occurs twice.
-3. The `Scope.md` Requirements column matches the tags for every use case.
-4. Glossary entries are in alphabetical order (case-insensitive) and each has a source.
+The Astra review prompt must forbid file edits, fixes, Git state changes, dev servers, and
+package installs. It should inspect the supplied diff and report findings, not run formatting
+or implementation commands.
 
-Temporary files, such as parser scripts and downloaded sources, go outside the repository.
+## Ports are links – hard rule
 
-## Git
-
-- Work happens on a feature branch; `main` is the main branch.
-- Commit messages are short and concise in sentence case ("Tag scenarios with stable REQ and PUC identifiers").
-- Git stores LF line endings; `core.autocrlf` converts them on Windows.
+Every mention of a local port or server in a reply is a full clickable URL (`http://localhost:4200/register`), never a bare `:4200` or `4200`. Applies to every mention, in every reply, including status lines and summaries. 
