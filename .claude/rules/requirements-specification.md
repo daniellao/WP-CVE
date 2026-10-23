@@ -10,6 +10,7 @@ This repository contains the requirements specification of WP CVE. There is no a
 | `spec.md` | Explanation of the app and its concepts; no binding rules | Hand |
 | `glossary.md` | Definitions of all terms, acronyms and abbreviations | `/glossary` |
 | `scope.md`, `images/product-scope-diagram.svg` | Product boundary and product use cases | `/scope` |
+| `plan.md` | Technical architecture; no binding rules | Hand |
 | `.claude/commands/` | `/analyze`, `/glossary`, `/scope` | Hand |
 
 ## Writing style

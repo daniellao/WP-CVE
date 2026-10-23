@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 720" width="820" height="720" font-family="Helvetica, Arial, sans-serif" font-weight="700" role="img" aria-label="product-scope-diagram">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 800" width="820" height="800" font-family="Helvetica, Arial, sans-serif" font-weight="700" role="img" aria-label="product-scope-diagram">
 <title>product-scope-diagram</title>
-<rect width="820" height="720" fill="#ffffff"/>
-<rect x="290" y="30" width="320" height="660" fill="none" stroke="#000000" stroke-width="1"/>
+<rect width="820" height="800" fill="#ffffff"/>
+<rect x="290" y="30" width="320" height="740" fill="none" stroke="#000000" stroke-width="1"/>
 <text x="450.0" y="60" font-size="18" text-anchor="middle" fill="#000000">WP CVE</text>
 <line x1="176.0" y1="228.0" x2="374.7" y2="149.7" stroke="#000000" stroke-width="1"/>
 <line x1="176.0" y1="228.0" x2="362.5" y2="219.2" stroke="#000000" stroke-width="1"/>
-<line x1="176.0" y1="228.0" x2="374.3" y2="287.3" stroke="#000000" stroke-width="1"/>
+<line x1="176.0" y1="228.0" x2="369.2" y2="285.8" stroke="#000000" stroke-width="1"/>
 <line x1="176.0" y1="228.0" x2="398.5" y2="371.8" stroke="#000000" stroke-width="1"/>
 <line x1="176.0" y1="538.0" x2="317.0" y2="539.0" stroke="#000000" stroke-width="1"/>
 <line x1="674.0" y1="288.0" x2="484.7" y2="501.0" stroke="#000000" stroke-width="1"/>
@@ -19,15 +19,19 @@
 <ellipse cx="450.0" cy="215" rx="80.0" ry="34" fill="#ffffff" stroke="#000000" stroke-width="1"/>
 <text x="450.0" y="211" font-size="16" text-anchor="middle" fill="#000000">Manage CVE</text>
 <text x="450.0" y="231" font-size="16" text-anchor="middle" fill="#000000">feeds</text>
-<ellipse cx="450.0" cy="310" rx="85.0" ry="34" fill="#ffffff" stroke="#000000" stroke-width="1"/>
-<text x="450.0" y="306" font-size="16" text-anchor="middle" fill="#000000">Inspect the</text>
-<text x="450.0" y="326" font-size="16" text-anchor="middle" fill="#000000">audit log</text>
+<ellipse cx="450.0" cy="310" rx="115.0" ry="34" fill="#ffffff" stroke="#000000" stroke-width="1"/>
+<text x="450.0" y="306" font-size="16" text-anchor="middle" fill="#000000">Inspect the audit</text>
+<text x="450.0" y="326" font-size="16" text-anchor="middle" fill="#000000">log and error log</text>
 <ellipse cx="450.0" cy="405" rx="85.0" ry="34" fill="#ffffff" stroke="#000000" stroke-width="1"/>
 <text x="450.0" y="401" font-size="16" text-anchor="middle" fill="#000000">Send a test</text>
 <text x="450.0" y="421" font-size="16" text-anchor="middle" fill="#000000">message</text>
 <ellipse cx="450.0" cy="540" rx="125.0" ry="34" fill="#ffffff" stroke="#000000" stroke-width="1"/>
 <text x="450.0" y="536" font-size="16" text-anchor="middle" fill="#000000">Check CVE feeds and</text>
 <text x="450.0" y="556" font-size="16" text-anchor="middle" fill="#000000">notify recipients</text>
+<line x1="176.0" y1="680.0" x2="345.0" y2="680.0" stroke="#000000" stroke-width="1"/>
+<ellipse cx="450.0" cy="680" rx="105.0" ry="34" fill="#ffffff" stroke="#000000" stroke-width="1"/>
+<text x="450.0" y="676" font-size="16" text-anchor="middle" fill="#000000">Restore WP CVE</text>
+<text x="450.0" y="696" font-size="16" text-anchor="middle" fill="#000000">from a backup</text>
 <circle cx="140" cy="198" r="9" fill="#ffffff" stroke="#000000" stroke-width="1"/>
 <line x1="140" y1="207" x2="140" y2="250" stroke="#000000" stroke-width="1" fill="none"/>
 <line x1="112" y1="220" x2="168" y2="220" stroke="#000000" stroke-width="1" fill="none"/>
@@ -58,4 +62,10 @@
 <line x1="710" y1="610" x2="678" y2="642" stroke="#000000" stroke-width="1" fill="none"/>
 <line x1="710" y1="610" x2="742" y2="642" stroke="#000000" stroke-width="1" fill="none"/>
 <text x="710" y="668" font-size="18" text-anchor="middle" fill="#000000">CVE API</text>
+<circle cx="140" cy="650" r="9" fill="#ffffff" stroke="#000000" stroke-width="1"/>
+<line x1="140" y1="659" x2="140" y2="702" stroke="#000000" stroke-width="1" fill="none"/>
+<line x1="112" y1="672" x2="168" y2="672" stroke="#000000" stroke-width="1" fill="none"/>
+<line x1="140" y1="702" x2="108" y2="734" stroke="#000000" stroke-width="1" fill="none"/>
+<line x1="140" y1="702" x2="172" y2="734" stroke="#000000" stroke-width="1" fill="none"/>
+<text x="140" y="760" font-size="18" text-anchor="middle" fill="#000000">System administrator</text>
 </svg>
