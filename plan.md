@@ -112,7 +112,7 @@ The webhook endpoints are excluded from the session and XSRF checks, and have th
   - removes the data from backups within 30 days, because backups older than 30 days are destroyed (REQ-061) and a restore by the system administrator (REQ-064) replays every `removed_profile` entry before the application starts (REQ-047).
 
   The audit log no longer shows the deliveries of a removed recipient profile (REQ-054). Removing the only recipient profile of a CVE feed sets `suspended_at` on that CVE feed instead of blocking the removal (REQ-050).
-- **Retention.** A daily job deletes delivery records and error log entries older than the agreed retention period, and `removed_profile` entries older than the backup retention period.
+- **Retention.** A daily job deletes delivery records, error log entries, and `removed_profile` entries older than the agreed retention period of 30 days.
 - **Application logs.** The logger redacts email addresses and phone numbers.
 - **Processors.** Postmark (ActiveCampaign) and Telnyx are based in the United States. Each processor has a signed data processing agreement with standard contractual clauses or coverage under the EU–US Data Privacy Framework, and an entry in the record of processing activities. Open tracking and link tracking are disabled in Postmark, and both providers keep message content for their shortest available period.
 
