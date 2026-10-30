@@ -6,7 +6,7 @@
 
 - [x] T001: Initialize Angular, Node server, and SQLite database (delivery_record, error_log). Configure Vitest, ESLint, Prettier, tsconfig strict mode. See [plan.md](plan.md) for the project structure.
 - [x] T002: Define TypeScript interfaces and union types (status, channel)
-- [ ] T003: Implement Postmark logic (REQ-001, REQ-002)
+- [x] T003: Implement Postmark logic (REQ-001, REQ-002)
 
 ### === Checkpoint 1 ===
 
