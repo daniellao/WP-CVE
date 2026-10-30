@@ -4,7 +4,7 @@
 
 > **Goal**: scaffold project, define types, build core app modules with tests.
 
-- [ ] T001: Initialize Angular, Node server, and SQLite database (delivery_record, error_log). Configure Vitest, ESLint, Prettier, tsconfig strict mode. See [plan.md](plan.md) for the project structure.
+- [x] T001: Initialize Angular, Node server, and SQLite database (delivery_record, error_log). Configure Vitest, ESLint, Prettier, tsconfig strict mode. See [plan.md](plan.md) for the project structure.
 - [ ] T002: Define TypeScript interfaces and union types (status, channel)
 - [ ] T003: Implement Postmark logic (REQ-001, REQ-002)
 
