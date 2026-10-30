@@ -1,6 +1,6 @@
 # TypeScript Style Guide
 
-Last updated on 2026-09-07.
+Last updated on 2026-10-30.
 
 This document contains guidelines for _Angular_ TypeScript files.
 
@@ -74,7 +74,7 @@ This document contains guidelines for _Angular_ TypeScript files.
 - avoid variable shadowing
 - declare one variable per statement
 - prefer arrow functions for callbacks
-- use comments for complex code, and only if necessary (the usage of descriptive and meaningful names for methods and variables should be enough in many cases, comments do not make up for bad code)
+- use comments for complex code, and only if necessary (the usage of descriptive and meaningful names for methods and variables should be enough in many cases, comments do not make up for bad code), see [Necessary Comments](https://blog.cleancoder.com/uncle-bob/2017/02/23/NecessaryComments.html)
 - mark todos with `// @ToDo: task description`
 - distinguish between Smart/Controller and Dumb/Presentational Components
 - lazy-load feature routes; use `@defer` for expensive non-critical view fragments

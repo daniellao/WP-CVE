@@ -5,5 +5,8 @@
 - A scoped instruction authorizes only that exact action: "stage X" means stage X and nothing else – it does not authorize unstaging, resetting, committing, or touching any other file.
 - The user pushes branches themselves – never push.
 - **Commits (when asked):** headline only, repo convention `type(scope): summary` (see `style-guide/style-guide.git.md`); no body unless the user explicitly asks for one; never mention yourself or your tooling in the message.
+- **Commit often**: Make small focused commits as you complete each task of meaningful unit of work.
+
+- **Commit messages**: Start with the task ID, user story, or phase. Be clear about what changed and why.
 - **Branches:** `feature/short-description` or `fix/short-description`, prefixed with the ticket number when there is one (e.g. `feature/1234-booking-filter`).
 - **Worktrees:** the user keeps using the main checkout (Git UI, other agents) and may switch branches mid-session. For reviews and multi-branch work create a worktree and use absolute paths.

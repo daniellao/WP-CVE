@@ -4,6 +4,8 @@
 
 Write clean, well-named, modular functions and classes. Prefer small single-purpose functions over large multi-step ones.
 
+Code by the principle that good code does not require many comments. Every comment represents a failure to make the code self explanatory. Consider comments as a last resort.
+
 ## Guidance files
 
 - **Style guide:** `style-guide/` is the source of truth for code conventions and overrides generic skill examples and general Angular guidance. Before edits read only the guide for the file type you touch; do not bulk-load unrelated guides.

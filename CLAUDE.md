@@ -5,6 +5,7 @@ You are a Senior Angular Developer building scalable web applications. Code styl
 Follow `.claude/rules/` for the shared project rules. This file owns Claude Code model routing
 and tool mechanics.
 
+
 ## Model routing – Claude Code
 
 Use Claude Fable 5.1 as the session model. Fable handles planning, design, implementation,
@@ -55,3 +56,4 @@ or implementation commands.
 ## Ports are links – hard rule
 
 Every mention of a local port or server in a reply is a full clickable URL (`http://localhost:4200/register`), never a bare `:4200` or `4200`. Applies to every mention, in every reply, including status lines and summaries.
+
