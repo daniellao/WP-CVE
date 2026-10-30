@@ -9,6 +9,7 @@
     "test": "vitest run"
   },
   "dependencies": {
+    "@wp-cve/shared": "workspace:*",
     "fastify": "^5.12.7"
   },
   "devDependencies": {
