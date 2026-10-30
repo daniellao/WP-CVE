@@ -1,2 +1,9 @@
 .env
 !.env.example
+
+node_modules/
+dist/
+coverage/
+.angular/
+*.tsbuildinfo
+apps/server/data/
