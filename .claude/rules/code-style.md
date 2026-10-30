@@ -18,7 +18,7 @@ Code by the principle that good code does not require many comments. Every comme
   - [Testing](style-guide/style-guide.spec.md) – unit and e2e test conventions.
   - [NPM packages](style-guide/style-guide.npm.md) – dependency and package changes.
   - [Git](style-guide/style-guide.git.md) – branch, commit, and review workflow.
-  - [Markdown](style-guide/style-guide.md.md) – documentation and Markdown edits.
+  - [Markdown](style-guide/style-guide.markdown.md) – documentation and Markdown edits.
 
 ## Verification & Commands
 

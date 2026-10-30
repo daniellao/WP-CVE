@@ -13,7 +13,7 @@ There are specific style guides for:
 - [Accessibility (a11y)](style-guide.a11y.md)
 - [Git Commits](style-guide.git.md)
 - [HTML View Templates](style-guide.html.md)
-- [Markdown Files](style-guide.md.md)
+- [Markdown Files](style-guide.markdown.md)
 - [NPM Packages](style-guide.npm.md)
 - [SCSS Styling Files](style-guide.scss.md)
 - [Security](style-guide.security.md)

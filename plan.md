@@ -1,4 +1,4 @@
-# WP CVE architecture plan
+# WP CVE architecture 
 
 This document describes the technical architecture of WP CVE. The binding rules are in the [feature files](features/), the concepts in [spec.md](spec.md) and the product use cases in [scope.md](scope.md).
 
@@ -39,7 +39,7 @@ The application runs as one container with one persistent volume, independent of
 |---|---|---|
 | Repository | pnpm workspace with `apps/web`, `apps/server` and `packages/shared` | One language; shared types and validators |
 | Frontend | Angular v22, zoneless, signals, `OnPush`, signal forms | Matches the project style guides |
-| Server | Node.js 24 LTS with Fastify | Small, fast and well maintained; built-in schema validation |
+| Server | Node.js 26 LTS with Fastify | Small, fast and well maintained; built-in schema validation |
 | Database | SQLite (`node:sqlite`) in WAL mode with `secure_delete` enabled; plain SQL and numbered migration files | A lightweight database without an object-relational mapping layer |
 | Backups | SQLite online backup API or Litestream; encrypted; kept for 30 days | Consistent copies without stopping the application |
 | Authentication | `openid-client` v6: OIDC authorization code flow with PKCE, run on the server | Certified library, independent of the identity provider; no passwords stored |
