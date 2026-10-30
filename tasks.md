@@ -1,20 +1,20 @@
-## Implementation tasks
+# Implementation tasks
 
-### Phase 1: project foundation
+## Phase 1: project foundation
 
-1. Scaffold project, define all types, build core app modules with tests.
+> **Goal**: scaffold project, define types, build core app modules with tests.
 
-- [ ] T001: Initialize Angular, Node server, and SQLite database. Configure Vitest, ESLint, tsconfig strict mode.
-- [ ] T002: Define all TypeScript interfaces and type enums.
-- [ ] T003: Implement Postmark logic
+- [ ] T001: Initialize Angular, Node server, and SQLite database (delivery_record, error_log). Configure Vitest, ESLint, Prettier, tsconfig strict mode. See [plan.md](plan.md) for the project structure.
+- [ ] T002: Define TypeScript interfaces and union types (status, channel)
+- [ ] T003: Implement Postmark logic (REQ-001, REQ-002)
 
-## === Checkpoint 1 ===
+### === Checkpoint 1 ===
 
 #### What to test:
 
-- npm run test
-- npm run build
-- npm run lint
+- pnpm run test
+- pnpm run build
+- pnpm run lint
 
 #### What you'll see:
 
