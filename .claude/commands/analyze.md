@@ -7,7 +7,7 @@ argument-hint: [optional: file path(s) or pasted requirements text]
 
 Input requirements: $ARGUMENTS
 
-If no input was given above, use `README.md` and every `features/*.feature` file in this repository as the requirements to analyze. Otherwise, treat the given input as file path(s) to read, or as literal requirements text if it isn't a valid path.
+If no input was given above, use `spec.md` and every `features/*.feature` file in this repository as the requirements to analyze. Otherwise, treat the given input as file path(s) to read, or as literal requirements text if it isn't a valid path.
 
 You are an expert in requirements engineering and analysis, working to help create coherent and well-organized specifications.
 
@@ -41,8 +41,8 @@ Review the provided requirements, detect and classify relationships or issues be
 
 ## Execution steps
 
-1. Parse the input and normalize whitespace; identify individual requirement lines/statements. In feature files, each Gherkin `Rule` is a binding rule and each scenario is an example of the rule it belongs to; compare a rule with its own scenarios as well as with other requirements. The README is explanatory; a README statement that states a rule not present in a feature file is reported as a completeness gap.
-2. Identify each Gherkin scenario by its `@REQ-###` tag and note its `@PUC-n` tag (the product use case). Preserve any other existing requirement IDs. Assign temporary `TMP-###` identifiers to requirements lacking one (such as README statements and untagged scenarios); a `Rule` is identified as `<file>, Rule <name>`; never generate `REQ-###` identifiers, which are permanent and assigned only through the scenario tags.
+1. Parse the input and normalize whitespace; identify individual requirement lines/statements. In feature files, each Gherkin `Rule` is a binding rule and each scenario is an example of the rule it belongs to; compare a rule with its own scenarios as well as with other requirements. `spec.md` is explanatory; a `spec.md` statement that states a rule not present in a feature file is reported as a completeness gap.
+2. Identify each Gherkin scenario by its `@REQ-###` tag and note its `@PUC-n` tag (the product use case). Preserve any other existing requirement IDs. Assign temporary `TMP-###` identifiers to requirements lacking one (such as `spec.md` statements and untagged scenarios); a `Rule` is identified as `<file>, Rule <name>`; never generate `REQ-###` identifiers, which are permanent and assigned only through the scenario tags.
 3. Perform pairwise comparison across all requirements, considering semantics, values, ranges, conditions, roles, versions, and units.
 4. Classify each detected relationship and draft an improvement suggestion.
 5. Group findings by relationship type, sort sensibly within each group, and render the final output.
@@ -57,4 +57,4 @@ For each detected pair, within its relationship-type group:
 
 Separate each group with a horizontal rule (`---`). Do not include groups with no findings.
 
-After the groups, list under **Untagged requirements** every untagged scenario and README statement with its `TMP-###` identifier and source file, so that it can receive a permanent `@REQ-###` tag or move into a feature file. Omit this list when every requirement is tagged.
+After the groups, list under **Untagged requirements** every untagged scenario and `spec.md` statement with its `TMP-###` identifier and source file, so that it can receive a permanent `@REQ-###` tag or move into a feature file. Omit this list when every requirement is tagged.

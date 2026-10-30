@@ -5,16 +5,24 @@
 *Source:* [NIST CSRC Glossary, from NISTIR 5153](https://csrc.nist.gov/glossary/term/application_programming_interface)
 
 **Application manager**
-A person who is authorized to log in to WP CVE to manage recipient profiles and CVE feeds, inspect the audit log and send test messages. A person who is not logged in as an application manager is denied these actions.
+A person who is authorized to log in to WP CVE to manage recipient profiles and CVE feeds, inspect the audit log and the error log, and send test messages. A person who is not logged in as an application manager is denied these actions.
 *Source:* project definition ([recipient_management.feature](features/recipient_management.feature), [cve_feeds.feature](features/cve_feeds.feature), [audit_log.feature](features/audit_log.feature), [test_message.feature](features/test_message.feature))
 
 **Audit log**
-"A chronological record of system activities, including records of system accesses and operations performed in a given period." Here, "audit log" is not used to refer to a record of all system activities: it holds only delivery records, which application managers inspect to check whether vulnerability notifications and test messages reached their recipients.
-*Source:* [NIST CSRC Glossary, from CNSSI 4009-2022 (as used in NIST SP 800-53 Rev. 5)](https://csrc.nist.gov/glossary/term/audit_log); project definition ([README](README.md), [audit_log.feature](features/audit_log.feature))
+"A chronological record of system activities, including records of system accesses and operations performed in a given period." Here, "audit log" is not used to refer to a record of all system activities: it holds only delivery records, which application managers inspect to check whether vulnerability notifications and test messages reached their recipients. The delivery records of a removed recipient profile are removed from the audit log.
+*Source:* [NIST CSRC Glossary, from CNSSI 4009-2022 (as used in NIST SP 800-53 Rev. 5)](https://csrc.nist.gov/glossary/term/audit_log); project definition ([spec.md](spec.md), [audit_log.feature](features/audit_log.feature), [recipient_management.feature](features/recipient_management.feature))
+
+**Backup**
+In WP CVE, backups are encrypted and kept for 30 days, a system administrator restores WP CVE from a backup, and the personal data of a removed recipient profile is removed from every backup within 30 days.
+*Source:* [NIST CSRC Glossary, from NIST SP 800-34 Rev. 1](https://csrc.nist.gov/glossary/term/backup); project definition ([recipient_management.feature](features/recipient_management.feature), [backup.feature](features/backup.feature))
 
 **Channel**
 A way of delivering a message to a recipient. WP CVE has two channels: email and SMS. A recipient profile records which channels its recipient is subscribed to.
-*Source:* project definition ([README](README.md), [delivery.feature](features/delivery.feature), [recipient_management.feature](features/recipient_management.feature))
+*Source:* project definition ([spec.md](spec.md), [delivery.feature](features/delivery.feature), [recipient_management.feature](features/recipient_management.feature))
+
+**Consent**
+"‘consent’ of the data subject means any freely given, specific, informed and unambiguous indication of the data subject's wishes by which he or she, by a statement or by a clear affirmative action, signifies agreement to the processing of personal data relating to him or her". In WP CVE, a recipient gives consent by email to the helpdesk, and the application manager confirms it when adding the recipient profile or changing its email address or phone number. A recipient withdraws consent by email to the helpdesk, whose procedure has the recipient profile removed within one month.
+*Source:* [GDPR, Article 4(11)](https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng); project definition ([recipient_management.feature](features/recipient_management.feature))
 
 **CPE (Common Platform Enumeration)**
 "A SCAP specification that provides a standard naming convention for operating systems, hardware, and applications for the purpose of providing consistent, easily parsed names that can be shared by multiple parties and solutions to refer to the same specific platform type." SCAP stands for Security Content Automation Protocol.
@@ -54,14 +62,14 @@ The CVE API request parameter that holds a CPE name: "This parameter returns all
 
 **CVE (Common Vulnerabilities and Exposures)**
 "The CVE trademark and the name Common Vulnerabilities and Exposures." Here, "a CVE" is not used to refer to the trademark or the program: it means one CVE Record, that is, one publicly disclosed vulnerability and its data as returned by the CVE API. The plural is also written "CVE".
-*Source:* [CVE Program Glossary](https://www.cve.org/ResourcesSupport/Glossary?activeTerm=glossaryCVE); project definition ([README](README.md))
+*Source:* [CVE Program Glossary](https://www.cve.org/ResourcesSupport/Glossary?activeTerm=glossaryCVE); project definition ([spec.md](spec.md))
 
 **CVE API**
 The NVD web service that WP CVE queries for CVE: "The CVE API is used to easily retrieve information on a single CVE or a collection of CVE from the NVD." Base URL (Uniform Resource Locator): `https://services.nvd.nist.gov/rest/json/cves/2.0`. Here, "CVE API" is not used to refer to the services of the CVE Program at cve.org.
 *Source:* [NVD Developers – Vulnerabilities API](https://nvd.nist.gov/developers/vulnerabilities)
 
 **CVE feed**
-A configured connection to the CVE API. A CVE feed holds exactly one CPE name, which is the only place a product is configured, and has at least one and at most two recipient profiles assigned to it. WP CVE polls each CVE feed and pages through all results. Here, "CVE feed" is not used to refer to the data feeds published by the NVD.
+A configured connection to the CVE API. A CVE feed holds exactly one CPE name, which is the only place a product is configured, and has at most two recipient profiles assigned to it, and at least one while it is not suspended. WP CVE polls each CVE feed that is not suspended and pages through all results. Here, "CVE feed" is not used to refer to the data feeds published by the NVD.
 *Source:* project definition ([cve_feeds.feature](features/cve_feeds.feature))
 
 **CVE ID (CVE Identifier)**
@@ -76,9 +84,13 @@ A configured connection to the CVE API. A CVE feed holds exactly one CPE name, w
 An entry in the audit log for one attempt to deliver a vulnerability notification or test message to a recipient profile over one channel. It shows the delivery status and, for a test message, is marked as a test.
 *Source:* project definition ([audit_log.feature](features/audit_log.feature), [delivery.feature](features/delivery.feature), [test_message.feature](features/test_message.feature))
 
+**Delivery report**
+A message from the email service or the SMS service that reports the outcome of a delivery. WP CVE updates the delivery status of the matching delivery record from it.
+*Source:* project definition ([spec.md](spec.md), [delivery.feature](features/delivery.feature))
+
 **Delivery status**
-The outcome shown in a delivery record: successful or failed.
-*Source:* project definition ([audit_log.feature](features/audit_log.feature))
+The outcome shown in a delivery record: pending until the delivery report arrives, then successful or failed; failed at once when the email service or SMS service rejects the message.
+*Source:* project definition ([audit_log.feature](features/audit_log.feature), [delivery.feature](features/delivery.feature))
 
 **Duplicate notification**
 A second vulnerability notification about the same CVE to the same recipient profiles of the same CVE feed. WP CVE does not send duplicate notifications.
@@ -90,11 +102,31 @@ A second vulnerability notification about the same CVE to the same recipient pro
 
 **Email service**
 The external, dedicated service that WP CVE uses to deliver email messages.
-*Source:* project definition ([README](README.md), [delivery.feature](features/delivery.feature))
+*Source:* project definition ([spec.md](spec.md), [delivery.feature](features/delivery.feature))
+
+**Error log**
+A record of failed CVE API requests and failed deliveries, kept for human inspection. The error log entries of a removed recipient profile are removed with it. Here, "error log" is not used to refer to the technical log of the application.
+*Source:* project definition ([spec.md](spec.md), [cve_feeds.feature](features/cve_feeds.feature), [delivery.feature](features/delivery.feature), [recipient_management.feature](features/recipient_management.feature))
+
+**First poll**
+The first poll for the current CPE name of a CVE feed: the first poll of a new CVE feed, or the first poll after a change of its CPE name. A first poll reports every CVE that matches the CPE name and has not been reported on that CVE feed.
+*Source:* project definition ([cve_feeds.feature](features/cve_feeds.feature), [cve_notifications.feature](features/cve_notifications.feature))
 
 **GDPR (General Data Protection Regulation)**
 Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data. WP CVE stores and removes recipient information in line with this regulation.
 *Source:* [EUR-Lex](https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng); project definition ([recipient_management.feature](features/recipient_management.feature))
+
+**Helpdesk**
+The support desk to which a recipient sends an email to request a recipient profile and to give consent to the storage of their phone number and email address.
+*Source:* project definition ([spec.md](spec.md), [recipient_management.feature](features/recipient_management.feature))
+
+**lastModEndDate**
+A CVE API request parameter that, together with lastModStartDate, limits a request by modification date: "These parameters return only the CVEs that were last modified during the specified period." WP CVE uses both parameters in every poll after the first poll of a CVE feed.
+*Source:* [NVD Developers – Vulnerabilities API](https://nvd.nist.gov/developers/vulnerabilities); project definition ([cve_feeds.feature](features/cve_feeds.feature))
+
+**lastModStartDate**
+A CVE API request parameter that, together with lastModEndDate, limits a request by modification date: "These parameters return only the CVEs that were last modified during the specified period." WP CVE uses both parameters in every poll after the first poll of a CVE feed.
+*Source:* [NVD Developers – Vulnerabilities API](https://nvd.nist.gov/developers/vulnerabilities); project definition ([cve_feeds.feature](features/cve_feeds.feature))
 
 **NVD (National Vulnerability Database)**
 "The U.S. government repository of standards based vulnerability management data represented using the Security Content Automation Protocol (SCAP). This data informs automation of vulnerability management, security measurement, and compliance."
@@ -104,33 +136,25 @@ Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 Apr
 The method the CVE API uses to return large collections in parts: "Through a series of smaller “chunked” responses controlled by an offset startIndex and a page limit resultsPerPage users may page through all the CVE in the NVD."
 *Source:* [NVD Developers – Vulnerabilities API](https://nvd.nist.gov/developers/vulnerabilities)
 
-**Phone number**
-The telephone number stored in a recipient profile, to which the SMS service delivers SMS messages.
-*Source:* project definition ([delivery.feature](features/delivery.feature), [recipient_management.feature](features/recipient_management.feature))
+**Personal data**
+"‘personal data’ means any information relating to an identified or identifiable natural person (‘data subject’)". In WP CVE, the personal data of a recipient is the phone number and email address in the recipient profile.
+*Source:* [GDPR, Article 4(1)](https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng); project definition ([recipient_management.feature](features/recipient_management.feature))
 
 **Poll / re-poll**
-To request all CVE for a CVE feed's CPE name from the CVE API, using offset-based pagination until every result has been retrieved. A re-poll is a later poll of the same CVE feed.
+To request the CVE for a CVE feed's CPE name from the CVE API, using offset-based pagination until every result of the request has been retrieved. A first poll requests every CVE for the CPE name; a later poll requests only the CVE modified since the last CVE received. A re-poll is a later poll of the same CVE feed.
 *Source:* project definition ([cve_feeds.feature](features/cve_feeds.feature), [cve_notifications.feature](features/cve_notifications.feature))
 
 **Publicly disclosed**
 "The state in which non-trivial information about a vulnerability is publicly available."
 *Source:* [CVE Program Glossary](https://www.cve.org/ResourcesSupport/Glossary?activeTerm=glossaryPubliclyDisclosed)
 
-**PUC (Product use case)**
-The identifier prefix of a product use case: a complete unit of functionality that delivers a result to an actor. Each scenario carries the identifier of its product use case as a `@PUC-n` tag. Example: `PUC-3`.
-*Source:* project definition ([Scope.md](Scope.md), [cve_feeds.feature](features/cve_feeds.feature))
-
 **Recipient**
 A person who receives vulnerability notifications and test messages from WP CVE.
-*Source:* project definition ([README](README.md), [delivery.feature](features/delivery.feature))
+*Source:* project definition ([spec.md](spec.md), [delivery.feature](features/delivery.feature))
 
 **Recipient profile**
-The stored record for one recipient, holding their phone number, email address and subscribed channels, and no CPE name. Each recipient has one recipient profile.
-*Source:* project definition ([README](README.md), [recipient_management.feature](features/recipient_management.feature))
-
-**REQ (Requirement)**
-The identifier prefix of a requirement. Each scenario carries a permanent three-digit identifier as a `@REQ-###` tag, which is never renumbered or reused. Example: `REQ-009`.
-*Source:* project definition ([cve_feeds.feature](features/cve_feeds.feature))
+The stored record for one recipient, holding the subscribed channels, an email address only when subscribed to email, a phone number only when subscribed to SMS, and no CPE name. Each recipient has one recipient profile.
+*Source:* project definition ([spec.md](spec.md), [recipient_management.feature](features/recipient_management.feature))
 
 **resultsPerPage**
 The CVE API request parameter that sets the page size: "This parameter specifies the maximum number of CVE records to be returned in a single API response."
@@ -142,7 +166,7 @@ The CVE API request parameter that sets the page size: "This parameter specifies
 
 **SMS service**
 The external, dedicated service that WP CVE uses to deliver SMS messages.
-*Source:* project definition ([README](README.md), [delivery.feature](features/delivery.feature))
+*Source:* project definition ([spec.md](spec.md), [delivery.feature](features/delivery.feature))
 
 **Stakeholder**
 "Individual or organization having a right, share, claim, or interest in a system or in its possession of characteristics that meet their needs and expectations." Here, "stakeholder" is not used to refer to recipients.
@@ -152,16 +176,24 @@ The external, dedicated service that WP CVE uses to deliver SMS messages.
 The CVE API request parameter that sets the offset: "This parameter specifies the index of the first CVE to be returned in the response data. The index is zero-based, meaning the first CVE is at index zero."
 *Source:* [NVD Developers – Vulnerabilities API](https://nvd.nist.gov/developers/vulnerabilities)
 
+**Suspended CVE feed**
+A CVE feed whose only recipient profile has been removed. WP CVE does not poll a suspended CVE feed until a recipient profile is assigned to it, and records the CVE modified during the suspension as reported without sending them, unless its CPE name was changed during the suspension.
+*Source:* project definition ([cve_feeds.feature](features/cve_feeds.feature), [recipient_management.feature](features/recipient_management.feature))
+
+**System administrator (SA)**
+A person who operates WP CVE, including restoring WP CVE from a backup. A system administrator does not manage recipient profiles or CVE feeds.
+*Source:* project definition ([backup.feature](features/backup.feature))
+
 **Test message**
 A message that an application manager sends to a recipient profile to confirm its contact details and CVE feed assignments. It lists the CVE feeds the recipient profile is assigned to and is recorded in the audit log marked as a test.
-*Source:* project definition ([README](README.md), [test_message.feature](features/test_message.feature))
+*Source:* project definition ([spec.md](spec.md), [test_message.feature](features/test_message.feature))
 
 **Vulnerability**
 "An instance of one or more weaknesses in a Product that can be exploited, causing a negative impact to confidentiality, integrity, or availability; a set of conditions or behaviors that allows the violation of an explicit or implicit security policy."
 *Source:* [CVE Program Glossary](https://www.cve.org/ResourcesSupport/Glossary?activeTerm=glossaryVulnerability)
 
 **Vulnerability notification**
-A message about a CVE, sent to every recipient profile assigned to a CVE feed when a poll of that CVE feed finds a CVE that has not been reported to those recipient profiles before. It is delivered over each channel the recipient profile is subscribed to and recorded in the audit log.
+A message about a CVE, sent to every recipient profile assigned to a CVE feed when a poll of that CVE feed finds a CVE that has not been reported on that CVE feed before. It is handed to the email service or the SMS service for each channel the recipient profile is subscribed to, and recorded in the audit log.
 *Source:* project definition ([cve_notifications.feature](features/cve_notifications.feature), [delivery.feature](features/delivery.feature))
 
 **Wildcard (`*`)**
@@ -170,8 +202,5 @@ In a CPE name: "When used alone, the asterisk ("*") represents the logical value
 
 **WordPress**
 "WordPress is open source software." It is the product whose publicly disclosed vulnerabilities WP CVE reports.
-*Source:* [WordPress.org – About](https://wordpress.org/about/); project definition ([README](README.md))
+*Source:* [WordPress.org – About](https://wordpress.org/about/); project definition ([spec.md](spec.md))
 
-**WP CVE (WordPress CVE)**
-The application described in this specification. It polls the CVE API and sends vulnerability notifications about publicly disclosed vulnerabilities in WordPress.
-*Source:* project definition ([README](README.md))

@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "ClaudeInChromeDomain(nvd.nist.gov)"
+    ]
+  }
+}

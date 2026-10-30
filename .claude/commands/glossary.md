@@ -1,5 +1,5 @@
 ---
-description: Build or update the project glossary (Glossary.md) from the requirements, per the Volere template's naming conventions and definitions section.
+description: Build or update the project glossary (glossary.md) from the requirements, per the Volere template's naming conventions and definitions section.
 argument-hint: [optional: file path(s) or terms to add/redefine]
 ---
 
@@ -7,15 +7,15 @@ argument-hint: [optional: file path(s) or terms to add/redefine]
 
 Input: $ARGUMENTS
 
-Without input, the specification is `README.md` and every `features/*.feature` file, and the full glossary is built. Otherwise, the input is a file path to read as the specification or, if it is not a valid path, a list of terms to add or redefine.
+Without input, the specification is `spec.md` and every `features/*.feature` file, and the full glossary is built. Otherwise, the input is a file path to read as the specification or, if it is not a valid path, a list of terms to add or redefine.
 
 The role is that of a requirements engineer maintaining the glossary of a requirements specification.
 
 ## Task
 
-Produce `Glossary.md`: the meanings of all names, acronyms and abbreviations in the specification, reflecting the terminology of the work environment and the standard names of the sector (vulnerability management, CVE, NVD, CPE, GDPR, messaging).
+Produce `glossary.md`: the meanings of all names, acronyms and abbreviations in the specification, reflecting the terminology of the work environment and the standard names of the sector (vulnerability management, CVE, NVD, CPE, GDPR, messaging).
 
-An existing `Glossary.md` is updated in place; its current state, including manual edits, is intended. Existing entries and wording are kept unless wrong, outdated or no longer used.
+An existing `glossary.md` is updated in place; its current state, including manual edits, is intended. Existing entries and wording are kept unless wrong, outdated or no longer used.
 
 ## Rules
 
@@ -25,7 +25,7 @@ An existing `Glossary.md` is updated in place; its current state, including manu
   1. The owning standard or program: CVE Program glossary (cve.org), NVD developer documentation (nvd.nist.gov), NISTIR 7695 for CPE 2.3, GDPR (EUR-Lex), IETF RFCs, ITU-T and 3GPP recommendations, wordpress.org.
   2. The NIST CSRC glossary (csrc.nist.gov/glossary), citing the underlying publication.
   Blogs, vendor marketing, Wikipedia and forums are excluded. Without an official definition, a project definition is written and marked as such.
-- **Project definitions.** Project-specific terms (roles, records, services, behaviors) are defined only from what the README and feature files state. Behavior is not invented.
+- **Project definitions.** Project-specific terms (roles, records, services, behaviors) are defined only from what `spec.md` and the feature files state. Behavior is not invented.
 - **Acronyms.** An acronym is defined in full, with the heading `Acronym (Full Name)`. An acronym inside a definition is expanded inline or has its own entry.
 - **No abbreviations.** No abbreviations are introduced. Abbreviations in the specification are reported for replacement (see Output).
 - **One name per concept.** No synonyms or homonyms. Where the specification uses two names for one concept or one name for two concepts, the most used term is defined and the conflict reported.
@@ -34,7 +34,7 @@ An existing `Glossary.md` is updated in place; its current state, including manu
 
 ## Execution steps
 
-1. Read the specification and `Glossary.md` (if present).
+1. Read the specification and `glossary.md` (if present).
 2. List each candidate term with the files it appears in.
 3. Classify each term as a sector term (official source) or a project term (specification).
 4. Look up sector terms in the official sources. Where a site renders on the client or blocks fetching, use its published raw data (for example, the CVE website's `glossaryEntries.json` on GitHub) or a search restricted to the official domain. Quotes are never written from memory; unverified wording is reported.
@@ -43,9 +43,9 @@ An existing `Glossary.md` is updated in place; its current state, including manu
 
 ## Output format
 
-`Glossary.md` contains the heading `# WP CVE Glossary` followed by the entries only: no introduction and no reference to the Volere template. Entry format:
+`glossary.md` contains the heading `# WP CVE Glossary` followed by the entries only: no introduction and no reference to the Volere template. Entry format:
 
-```
+```markdown
 **Term (Full Name, if an acronym)**
 Definition, with official wording in "double quotes".
 *Source:* [Publication or page, §section](https://official.url)
@@ -53,7 +53,7 @@ Definition, with official wording in "double quotes".
 
 Source line for project terms:
 
-```
+```markdown
 *Source:* project definition ([file](path), [file](path))
 ```
 
