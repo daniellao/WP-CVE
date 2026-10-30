@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "node --env-file-if-exists=.env src/main.ts",
+    "send-test-email": "node --env-file=.env src/delivery/send-test-email.ts",
     "build": "tsc",
     "test": "vitest run"
   },
